@@ -1,26 +1,28 @@
 
 package:
   name: gridtools
-  version: 0.4.0rc0+1
+  version: 0.4.1
 
 source:
   git_url: https://github.com/CAB-LAB/gridtools.git
-  git_rev: v0.4.0rc0+1
+#  git_rev: v0.4.0rc0+1
 
 build:
   number: 0
 
 requirements:
   build:
-    - python
-    - numpy
-    - numba >=0.27
+    # use build variant : https://conda.io/docs/user-guide/tasks/build-packages/variants.html
+    - python {{ python }}
+    - numpy {{ numpy }}
+    - numba {{ numba }}
 
   run:
-    - python
-    - numpy
-    - numba >=0.27
+    - python {{ python }}
+    - numpy {{ numpy }}
+    - numba {{ numba }}
 
+# todo - tests only failed in Windows build, must investigate
 test:
   imports:
     - gridtools
@@ -28,6 +30,7 @@ test:
     - gridtools.gapfilling
 
 about:
+  home: https://github.com/CAB-LAB/gridtools
   license: MIT
   license_file: LICENSE
 
